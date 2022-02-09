@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Tree {
     int[] nodes;
 
@@ -23,6 +25,18 @@ public class Tree {
         nodes[root(index1)] = root(index2);
     }
 
+    public void randomUnion() {
+        //For each node in tree. Do a random union
+        for (int i = 0; i < nodes.length; i++) {
+            Random random = new Random();
+            //Generate 2 random numbers between 0 and nodes.length
+            int randomNumber = random.nextInt(nodes.length - 0) + 0;
+            int randomNumber2 = random.nextInt(nodes.length - 0) + 0;
+
+            union(randomNumber, randomNumber2);
+        }
+    }
+
     ////////////////////////////////
     // Display functions
 
@@ -43,15 +57,9 @@ public class Tree {
     }
 
     public static void main(String[] args) {
-        Tree t = new Tree(10);
+        Tree t = new Tree(100);
         t.display();
-        t.union(0,1);
+        t.randomUnion();
         t.display();
-        t.union(1,2);
-        t.display();
-        t.union(4,0);
-        t.display();
-        t.displayConnected(4, 1);
-        t.displayConnected(4, 9);
     }
 }
